@@ -2,7 +2,7 @@
 
 int *plaats_van(int t[], const int n, int g);
 void schrijf_array(int t[], const int size);
-void plaats_ptr_op_getal(int **arr, const int size, int g);
+void plaats_ptr_op_getal(const int ** const arr, const int size, int g);
 
 int main() {
 	int arr[] = {0, 1, 2, 3, 4, 5, 6};
@@ -18,7 +18,7 @@ int main() {
 
 	schrijf_array(arr, size);
 
-	int *ptr = arr;
+	int const *ptr = arr;
 	plaats_ptr_op_getal(&ptr, size, ++nr);
 	printf("\n");
 	if (ptr == NULL) {
@@ -47,7 +47,7 @@ void schrijf_array(int t[], const int size) {
 	}
 }
 
-void plaats_ptr_op_getal(int **arr, const int size, int g) {
+void plaats_ptr_op_getal(const int ** const arr, const int size, int g) {
 	int i = 0;
 
 	while (**arr != g && i < size) {

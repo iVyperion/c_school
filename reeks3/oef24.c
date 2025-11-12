@@ -1,7 +1,8 @@
 #include <stdio.h>
 const int AANTAL = 5;
 
-void vul_array(int a[], int b[], int c[], int amount, int fun(int a, int b));
+// Indien int fun(int a, int b) of int (fun)(int a, int b) maak compiler daar automatisch int (*fun)(int a, int b) van
+void vul_array(int a[], int b[], int c[], int amount, int (*fun)(int a, int b));
 
 int som(int a, int b) { return a + b; }
 int product(int a, int b) { return a * b; }
@@ -33,7 +34,7 @@ int main() {
 }
 
 
-void vul_array(int a[], int b[], int c[], int amount, int fun(int a, int b)) {
+void vul_array(int a[], int b[], int c[], int amount, int (*fun)(int a, int b)) {
     for (int i = 0; i < amount; i++) {
         c[i] = fun(a[i], b[i]);
     }
